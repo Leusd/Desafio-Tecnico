@@ -25,7 +25,8 @@ public with sharing class AccountDomain {
                 tarefas.add(new Task(
                     Subject = 'Consumidor Final',
                     WhatId = a.Id,
-                    Status = 'Not Started'
+                    Status = 'Not Started',
+                    Priority = 'Normal'
                 ));
             }
         }
