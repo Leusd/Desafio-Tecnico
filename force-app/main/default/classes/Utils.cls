@@ -11,7 +11,7 @@ public with sharing class Utils {
 
         // Verifica dígitos verificadores
         Integer digito1 = calcularDigito(cnpj.substring(0, 12), 5);
-        Integer digito2 = calcularDigito(cnpj.substring(0, 13), 6);
+        Integer digito2 = calcularDigito(cnpj.substring(0, 12) + digito1, 6);
 
         return cnpj.substring(12, 14) == String.valueOf(digito1) + String.valueOf(digito2);
     }
@@ -37,6 +37,9 @@ public with sharing class Utils {
         for (Integer i = 0; i < parte.length(); i++) {
             soma += Integer.valueOf(parte.substring(i, i + 1)) * peso;
             peso--;
+            if (peso < 2) {
+                peso = 9;
+            }
         }
         Integer resto = Math.mod(soma, 11);
         if (resto < 2) {
